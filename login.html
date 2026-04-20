@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Canteen Management System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    background: rgba(255, 223, 0, 0.15);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGIN CARD */
+.login-box {
+    background: white;
+    padding: 35px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* INPUTS */
+.input-box {
+    position: relative;
+    margin: 15px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 5px rgba(255,107,107,0.5);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #fff3b0;
+}
+
+/* LINKS */
+.link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+/* LOGO / TITLE */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color:pinks;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+```
+<div class="logo">Canteen Management System</div>
+<div class="subtitle">Welcome back! Please login</div>
+
+<h2>Login</h2>
+
+<form action="login.php" method="POST">
+
+    <div class="input-box">
+        <input type="email" name="email" placeholder="Enter Email" required>
+    </div>
+
+    <div class="input-box">
+        <input type="password" name="password" placeholder="Enter Password" required>
+    </div>
+
+    <button type="submit">Login</button>
+
+</form>
+
+<div class="link">
+    <p>Don't have an account? <a href="signup.html">Signup</a></p>
+</div>
+```
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup - Canteen System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    background: #fffdf2; /* soft yellow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.signup-box {
+    background: white;
+    padding: 35px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* INPUTS */
+.input-box {
+    margin: 12px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 5px rgba(255,107,107,0.5);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4b4b;
+}
+
+/* LINKS */
+.link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+/* LOGO */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff6b6b;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="signup-box">
+
+```
+<div class="logo">🍔 Canteen System</div>
+<div class="subtitle">Create your account</div>
+
+<h2>Signup</h2>
+
+<form action="signup.php" method="POST">
+
+    <div class="input-box">
+        <input type="text" name="username" placeholder="Enter Username" required>
+    </div>
+
+    <div class="input-box">
+        <input type="email" name="email" placeholder="Enter Email" required>
+    </div>
+
+    <div class="input-box">
+        <input type="password" name="password" placeholder="Enter Password" required>
+    </div>
+
+    <button type="submit">Signup</button>
+
+</form>
+
+<div class="link">
+    <p>Already have an account? <a href="login.html">Login</a></p>
+</div>
+```
+
+</div>
+
+</body>
+</html>
