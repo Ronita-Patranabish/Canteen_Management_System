@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Place Order</title>
+</head>
+
+<body>
+
+<script>
+// Simulated login session
+let user = localStorage.getItem("user");
+
+// Simulated cart data
+let data = JSON.parse(localStorage.getItem("cart")) || { items: [], total: 0 };
+
+let items = data.items;
+let total = data.total;
+
+// CHECK LOGIN (same logic as PHP session check)
+if (!user) {
+    alert("User not logged in");
+    window.location.href = "login.html";
+}
+
+// CHECK EMPTY CART
+else if (!items || items.length === 0) {
+    alert("Cart is empty");
+    window.location.href = "index.html#menu";
+}
+
+// SUCCESS CASE (simulating DB insert)
+else {
+    let order_id = Math.floor(Math.random() * 100000);
+
+    alert("Order placed successfully!\nYour Order ID: " + order_id);
+
+    // Clear cart
+    localStorage.removeItem("cart");
+
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
