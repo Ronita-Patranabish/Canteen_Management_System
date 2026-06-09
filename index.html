@@ -1,404 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canteen Management System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canteen Management System</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" media="screen and (max-width:1170px)" href="Images.css"/>
+<style>
+/* (your entire CSS remains exactly same) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-background-image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(51, 51, 51, 0.95);
+    padding: 10px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#logo img { height: 45px; width: auto; }
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+#navbar a { color: white; text-decoration: none; font-weight: bold; }
+#navbar a:hover { color: #ff4d6d; }
+
+section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+
+.h-primary { 
+    text-align: center; 
+    margin-bottom: 30px; 
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-item {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 12px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.menu-item h3 { font-size: 1.1rem; margin: 5px 0; }
+.menu-item p { color: #e63946; font-weight: bold; margin-bottom: 10px; }
+
+.add-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* CART */
+#cart { background: rgba(255, 255, 255, 0.9); border-radius: 15px; margin-top: 40px; margin-bottom: 40px;}
+
+#cart-items { list-style: none; max-width: 600px; margin: auto; padding: 10px; }
+
+#cart-items li {
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-plus { background: #4CAF50; color: white; border: none; padding: 5px 12px; }
+.btn-minus { background: #ff4d4d; color: white; border: none; padding: 5px 12px; }
+
+.btn-submit {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 20px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<ul id="nav-links">
-    <li class="item"><a href="#home">Home</a></li>
-    <li class="item"><a href="#menu">Menu</a></li>
-    <li class="item"><a href="#cart">Cart</a></li>
-    <li class="item"><a href="#orders">Orders</a></li>
-    <li class="item"><a href="#contact">Contact</a></li>
+<nav id="navbar">
+    <div id="logo"><img src="L.png" alt="Logo"></div>
 
-    <li id="loginLink">
-        <a href="login.html">Login</a>
-    </li>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#cart">Cart</a></li>
+        <li><a href="#contact">Contact</a></li>
 
-    <li id="welcomeUser" style="display:none;">
-        <a href="#">Welcome, <span id="usernameDisplay"></span></a>
-    </li>
+        <!-- PHP REMOVED: replaced with simple links -->
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Signup</a></li>
+    </ul>
+</nav>
 
-    <li id="logoutBtn" style="display:none;">
-        <a href="#" onclick="logout()">Logout</a>
-    </li>
-</ul>
-
-<!-- HOME -->
 <section id="home">
-    <h1 class="h-primary">Welcome to Canteen Management System</h1>
-    <p>Order food easily from your college canteen.</p>
-    <button class="btn" onclick="scrollToMenu()">Order Now</button>
+    <h1 class="h-primary" style="font-size: 3rem;">Welcome to Canteen Management System !!!</h1>
+    <p style="text-align:center; color: white; font-size: 1.2rem;">Delicious food, just a click away.</p>
 </section>
 
-<!-- SEARCH -->
-<div class="center">
-    <input type="text" id="search" placeholder="Search food..." onkeyup="searchFood()">
-</div>
-
-<!-- MENU -->
 <section id="menu">
-    <h1 class="h-primary center">Menu</h1>
+    <h1 class="h-primary">Our Delicious Menu</h1>
 
     <div class="menu-container">
+        <div class="menu-item"><img src="samosa.png"><h3>Samosa</h3><p>₹20</p><button class="add-btn" onclick="addToCart('Samosa',20)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="samosa.png" alt="">
-            <h3>Samosa</h3>
-            <p>₹20</p>
-            <button onclick="addToCart('Samosa',20)">Add</button>
-        </div>
+        <div class="menu-item"><img src="chai.png"><h3>Chai</h3><p>₹10</p><button class="add-btn" onclick="addToCart('Chai',10)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="chai.png" alt="">
-            <h3>Chai</h3>
-            <p>₹10</p>
-            <button onclick="addToCart('Chai',10)">Add</button>
-        </div>
+        <div class="menu-item"><img src="sandwitch.png"><h3>Sandwich</h3><p>₹40</p><button class="add-btn" onclick="addToCart('Sandwich',40)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="sandwitch.png" alt="">
-            <h3>Sandwich</h3>
-            <p>₹40</p>
-            <button onclick="addToCart('Sandwitch',40)">Add</button>
-        </div>
+        <div class="menu-item"><img src="HakkaNoodles.png"><h3>Hakka Noodles</h3><p>₹60</p><button class="add-btn" onclick="addToCart('Hakka Noodles',60)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="HakkaNoodles.png" alt="">
-            <h3>Hakka Noodles</h3>
-            <p>₹60</p>
-            <button onclick="addToCart('Hakka Noodles',60)">Add</button>
-        </div>
+        <div class="menu-item"><img src="SpringRoll.png"><h3>Spring Roll</h3><p>₹60</p><button class="add-btn" onclick="addToCart('Spring Roll',60)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="SpringRoll.png" alt="">
-            <h3>Spring Roll</h3>
-            <p>₹60</p>
-            <button onclick="addToCart('Spring Roll',60)">Add</button>
-        </div>
+        <div class="menu-item"><img src="Coffee.png"><h3>Hot Coffee</h3><p>₹20</p><button class="add-btn" onclick="addToCart('Hot Coffee',20)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="Coffee.png" alt="">
-            <h3> Hot Coffee</h3>
-            <p>₹20</p>
-            <button onclick="addToCart('Hot Coffee',20)">Add</button>
-        </div>
+        <div class="menu-item"><img src="BreadPakora.png"><h3>Bread Pakora</h3><p>₹60</p><button class="add-btn" onclick="addToCart('Bread Pakora',60)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="BreadPakora.png" alt="">
-            <h3>Bread Pakora</h3>
-            <p>₹60</p>
-            <button onclick="addToCart('Bread Pakora',60)">Add</button>
-        </div>
+        <div class="menu-item"><img src="ColdCoffee.png"><h3>Cold Coffee</h3><p>₹20</p><button class="add-btn" onclick="addToCart('Cold Coffee',20)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="ColdCoffee.png" alt="">
-            <h3>Cold Coffee</h3>
-            <p>₹20</p>
-            <button onclick="addToCart('Cold Coffee',20)">Add</button>
-        </div>
+        <div class="menu-item"><img src="FrenchFries.png"><h3>French Fries</h3><p>₹40</p><button class="add-btn" onclick="addToCart('French Fries',40)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="FrenchFries.png" alt="">
-            <h3>French Fries</h3>
-            <p>₹40</p>
-            <button onclick="addToCart('French Fries',40)">Add</button>
-        </div>
+        <div class="menu-item"><img src="Lemonade.png"><h3>Lemonade</h3><p>₹20</p><button class="add-btn" onclick="addToCart('Lemonade',20)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="Lemonade.png" alt="">
-            <h3>Lemonade</h3>
-            <p>₹20</p>
-            <button onclick="addToCart('Lemonade',20)">Add</button>
-        </div>
+        <div class="menu-item"><img src="Kachori.png"><h3>Kachori</h3><p>₹40</p><button class="add-btn" onclick="addToCart('Kachori',40)">Add +</button></div>
 
-        <div class="menu-item">
-            <img src="Kachori.png" alt="">
-            <h3>Kachori</h3>
-            <p>₹40</p>
-            <button onclick="addToCart('Kachori',40)">Add</button>
-        </div>
-
-        <div class="menu-item">
-            <img src="Pasta.png" alt="">
-            <h3>Pasta</h3>
-            <p>₹60</p>
-            <button onclick="addToCart('Pasta',60)">Add</button>
-        </div>
-
-
+        <div class="menu-item"><img src="Pasta.png"><h3>Pasta</h3><p>₹60</p><button class="add-btn" onclick="addToCart('Pasta',60)">Add +</button></div>
     </div>
 </section>
 
-<!-- CART -->
 <section id="cart">
-    <h1 class="h-primary center">Your Cart</h1>
+    <h1 class="h-primary">Your Shopping Cart</h1>
+    <ul id="cart-items"></ul>
+    <h2 style="text-align:center;">Total Amount: ₹<span id="total">0</span></h2>
 
-    <ul id="cart-items" class="center"></ul>
-
-    <h2 class="center">Total: ₹<span id="total">0</span></h2>
-
-    <div class="center">
-        <button class="btn" onclick="placeOrder()">Place Order</button>
+    <div style="text-align:center;">
+        <button class="btn-submit" onclick="placeOrder()">Confirm Order</button>
     </div>
 </section>
 
-<!-- ORDERS -->
-<section id="orders">
-    <h1 class="h-primary center">Order History</h1>
-
-    <div id="order-history" class="center">
-        No orders yet
-    </div>
-</section>
-
-<!-- FEATURED -->
-<section id="featured">
-    <h1 class="h-primary center">Featured Items</h1>
-
-    <div class="menu-container">
-
-        <div class="menu-item">
-            <img src="samosa.png" alt="">
-            <h3>Hot Samosa</h3>
-            <p>Fresh & crispy</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="sandwitch.png" alt="">
-            <h3>Grilled Sandwich</h3>
-            <p>Cheesy delight</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="chai.png" alt="">
-            <h3>Special Chai</h3>
-            <p>Refreshing drink</p>
-        </div>
-             
-        <div class="menu-item">
-            <img src="HakkaNoodles.png" alt="">
-            <h3>Hakka Noodles</h3>
-            <p>Tasty and Flavorful</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="SpringRoll.png" alt="">
-            <h3>Spring Roll</h3>
-            <p>Crunchy & Flavorful Snack</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="Coffee.png" alt="">
-            <h3>Coffee</h3>
-            <p>Hot Coffee</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="BreadPakora.png" alt="">
-            <h3>Bread Pakora</h3>
-            <p>Crispy Delight</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="ColdCoffee.png" alt="">
-            <h3>Cold Coffee</h3>
-            <p>Cool Brew</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="FrenchFries.png" alt="">
-            <h3>French Fries</h3>
-            <p>Crispy & golden perfection</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="Lemonade.png" alt="">
-            <h3>Lemonade</h3>
-            <p>Fresh Refreshment</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="Kachori.png" alt="">
-            <h3>Kachori</h3>
-            <p>Crispy Snack</p>
-        </div>
-
-        <div class="menu-item">
-            <img src="Pasta.png" alt="">
-            <h3>Pasta</h3>
-            <p>Delicious</p>
-        </div>
-
-
-    </div>
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
-    <h1 class="h-primary center">Contact Us</h1>
+    <h1 class="h-primary">Contact Us</h1>
 
-    <div id="contact-box">
-        <form action="contact.php" method="POST">
-
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label>Phone</label>
-                <input type="text" name="phone" required>
-            </div>
-
-            <div class="form-group">
-                <label>Message</label>
-                <textarea name="message"></textarea>
-            </div>
-
-            <button type="submit" class="btn">Submit</button>
-
-        </form>
-    </div>
+    <form>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Phone" required>
+        <textarea placeholder="Message"></textarea>
+        <button type="submit" class="btn-submit">Send Message</button>
+    </form>
 </section>
 
-<!-- FOOTER -->
 <footer>
-    <div class="center">
-        © 2026 Canteen Management System | All Rights Reserved
-    </div>
+    <p>© 2026 Canteen Management System</p>
 </footer>
 
-<!-- JAVASCRIPT -->
 <script>
 let cart = [];
-let total = 0;
-let orders = [];
 
-// Add to cart
-function addToCart(item, price) {
-    cart.push({item, price});
-    total += price;
+function addToCart(item, price){
+    let found = cart.find(c => c.item === item);
+    if(found) found.qty++;
+    else cart.push({item, price, qty:1});
     updateCart();
 }
 
-// Update cart UI
-function updateCart() {
-    let cartList = document.getElementById("cart-items");
-    cartList.innerHTML = "";
+function removeFromCart(item){
+    let found = cart.find(c => c.item === item);
+    if(found){
+        found.qty--;
+        if(found.qty <= 0) cart = cart.filter(c => c.item !== item);
+    }
+    updateCart();
+}
 
-    cart.forEach((c) => {
+function updateCart(){
+    let list = document.getElementById("cart-items");
+    let total = 0;
+    list.innerHTML = "";
+
+    cart.forEach(c => {
+        total += c.price * c.qty;
+
         let li = document.createElement("li");
-        li.innerText = c.item + " - ₹" + c.price;
-        cartList.appendChild(li);
+        li.innerHTML = `
+            <span>${c.item} (₹${c.price} x ${c.qty})</span>
+            <div>
+                <button class="btn-plus" onclick="addToCart('${c.item}',${c.price})">+</button>
+                <button class="btn-minus" onclick="removeFromCart('${c.item}')">-</button>
+            </div>
+        `;
+        list.appendChild(li);
     });
 
     document.getElementById("total").innerText = total;
 }
 
-// Place order
-function placeOrder() {
-    if (cart.length === 0) {
+function placeOrder(){
+    if(cart.length === 0){
         alert("Cart is empty!");
         return;
     }
 
-    fetch("place_order.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            items: cart,
-            total: total
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert("Order Placed! ID: " + data.order_id);
-
-        cart = [];
-        total = 0;
-        updateCart();
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Error placing order");
-    });
-}
-
-// Update order history
-function updateOrders() {
-    let div = document.getElementById("order-history");
-
-    if (orders.length === 0) {
-        div.innerHTML = "No orders yet";
-        return;
-    }
-
-    let content = "";
-    orders.forEach(o => {
-        content += `<p>Order #${o.id} - ₹${o.total}</p>`;
-    });
-
-    div.innerHTML = content;
-}
-
-// Search function
-function searchFood() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let items = document.getElementsByClassName("menu-item");
-
-    for (let i = 0; i < items.length; i++) {
-        let text = items[i].innerText.toLowerCase();
-        items[i].style.display = text.includes(input) ? "" : "none";
-    }
-}
-
-// Scroll
-function scrollToMenu() {
-    document.getElementById("menu").scrollIntoView({behavior: "smooth"});
-}
-</script>
-
-<script>
-window.onload = function () {
-
-    const username = localStorage.getItem("username");
-
-    if (username) {
-
-        document.getElementById("loginLink").style.display = "none";
-
-        document.getElementById("welcomeUser").style.display = "block";
-
-        document.getElementById("logoutBtn").style.display = "block";
-
-        document.getElementById("usernameDisplay").innerText = username;
-    }
-};
-
-function logout() {
-
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
-
-    alert("Logged out successfully!");
-
-    window.location.reload();
+    alert("Order placed successfully!");
+    cart = [];
+    updateCart();
 }
 </script>
 
