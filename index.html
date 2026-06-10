@@ -141,8 +141,8 @@ footer {
         <li><a href="#contact">Contact</a></li>
 
         <!-- PHP REMOVED: replaced with simple links -->
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Signup</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Signup</a></li>
     </ul>
 </nav>
 
@@ -194,7 +194,7 @@ footer {
 <section id="contact">
     <h1 class="h-primary">Contact Us</h1>
 
-    <form>
+    <form onsubmit="event.preventDefault(); alert('Message Sent Successfully!');"></form>
         <input type="text" placeholder="Name" required>
         <input type="email" placeholder="Email" required>
         <input type="text" placeholder="Phone" required>
